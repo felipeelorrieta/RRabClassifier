@@ -5,12 +5,19 @@ THIS DOCUMENT CONTAINS THE INSTRUCTION TO RUN THE PIPELINE OF RRab CLASSIFIER
 FIRST THIS DIRECTORY CONTAINS THE FOLLOWING FILES:
 
   1: Boost1b295T.Rdata = Classifier of RRab performed by Adaboost.M1 using 12 Features (See Appendix)
+  
   2: Pipeline.py = Python Code to compute the following features (A.1.1,A.1.2,A.1.3,PH.1.2.,PH.1.3.,PH.1.4 and skew)
+ 
   3: Pipeline.sh = Code to call the gls function of Fortran. The features computed by this code are f1 and P1.
+ 
   4: Pipeline3.R = R code which performed all the procedure to classify the variable Stars. This code call the python and Fortran codes internally.
+  
   5: README.txt = Instructions to Run the Pipeline of RRab Classifier.
+  
   6: gls = Directory Necessary to Run gls using Fortran.
+  
   7: gls.par = In this file we setting the parameters of GLS.
+  
   8: newfeatures.R = R code to compute the following features (p2p_spfom,p2p_s2p,R1)
 
 REQUIREMENTS OF R AND PYTHON.
