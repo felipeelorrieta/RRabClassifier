@@ -1,0 +1,49 @@
+newfeatures<-function(t,m,m1,mod1,mod2)
+{
+	    fold1<-m[order(mod1)]
+	    fold2<-m[order(mod2)]
+            l1<-length(m)
+            mad=median(abs(m-median(m)))
+            mad1=median(abs(m1-median(m1)))
+            ssr=mad1/mad
+            s1<-0
+            s2<-0
+            s3<-0
+            s4<-0
+            dm<-NULL
+            s5<-0
+            for(i in 2:l1)
+            {
+                s1<-s1+(fold2[i]-fold2[i-1])**(2)
+                s2<-s2+(m[i]-m[i-1])**(2)
+                s3<-s3+abs(m[i]-m[i-1])/mad
+                s4<-s4+abs(fold1[i]-fold1[i-1])/mad
+                dm[i-1]<-((fold2[i]-fold2[i-1])/(t[i]-t[i-1]))
+                s5<-s5+((m[i]-m[i-1])**(2))/var(m)
+            }
+            p2p_s2p<-s1/s2
+            p2p_som<-s3/(l1-1)
+            p2p_spfom<-s4/(l1-1)
+	    fold0<-c(mod1,mod1+1)
+	    l1<-length(fold0)
+	    m<-rep(m,2)
+	    m2<-m[order(fold0)]
+	    fold0<-fold0[order(fold0)]
+	    ss2<-smooth.spline(fold0,m2,spar=0.8)
+	    smooth3<-predict(ss2,fold0)$y
+	    R4<-Ratio(fold0,smooth3)
+	    r1<-R4$R4
+	    R2<-R4$R5            
+            return(c(ssr,p2p_s2p,p2p_som,p2p_spfom,r1,R2))
+}
+
+
+Ratio<-function(t,m)
+{
+        pos1<-which.max(m[1:(length(m)/2)])
+        pos3<-which.min(m[(pos1+1):(pos1+length(m)/2)]) + pos1
+        pos2<-which.max(m[(pos3+1):length(m)])+pos3
+        Ratio4<-(t[pos3]-t[pos1])/(t[pos2]-t[pos3])
+        Ratio5<-abs(pos3-pos1)/abs(pos2-pos3)
+        return(list(R4=Ratio4,R5=Ratio5))
+}
