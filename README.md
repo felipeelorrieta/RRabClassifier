@@ -19,7 +19,9 @@ FIRST THIS DIRECTORY CONTAINS THE FOLLOWING FILES:
   
   7: gls.par = In this file we setting the parameters of GLS.
   
-  8: newfeatures.R = R code to compute the following features (p2p_spfom,p2p_s2p,R1)
+  8: newfeatures.R = R code to compute the following features (p2p_spfom,p2p_s2p,R1).
+  
+  PS: To get the Rdata file needed to run the classifier, please send me an email (felipe.elorrieta@usach.cl).
 
 REQUIREMENTS OF R AND PYTHON.
 
